@@ -18,3 +18,9 @@ class Node:
         # this is the minimum distance (shortest path) from the source vertex (starting vertex)
         self.min_distance = float('inf')
 
+    # this is how Python can compare objects
+    # after inserting these objects into the heap
+    # heap can compare the given objects !!!
+    def __lt__(self, other):
+        return self.min_distance < other.min_distance
+
