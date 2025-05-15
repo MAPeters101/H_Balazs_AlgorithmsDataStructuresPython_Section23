@@ -60,6 +60,8 @@ class DijkstraAlgorithm:
 
                 # there is a shorter path to the v vertex
                 if new_distance < v.min_distance:
+                    # when there is a shortest path available then we update the
+                    # predecessor accordingly
                     v.predecessor = u
                     v.min_distance = new_distance
                     # update the heap - this is the lazy implementation
@@ -69,3 +71,18 @@ class DijkstraAlgorithm:
                     heapq.heappush(self.heap, v)
 
             actual_vertex.visited = True
+
+        @staticmethod
+        def get_shortest_path(vertex):
+
+            print("Shortest path to vertex is: %s" % str(vertex.min_distance))
+
+            actual_vertex = vertex
+
+            while actual_vertex.predecessor is not None:
+                print("%s " % actual_vertex.name)
+                actual_vertex = actual_vertex.predessor
+
+
+
+
