@@ -45,7 +45,11 @@ class DijkstraAlgorithm:
         while self.heap:
 
             # we pop the vertex with lowest min_distance parameter
+            # pop function removes the given item !!!
             actual_vertex = heapq.heappop(self.heap)
+
+            if actual_vertex.visited:
+                continue
 
             # we have to consider the neighbors
             for edge in actual_vertex.adjacency_list:
@@ -63,3 +67,5 @@ class DijkstraAlgorithm:
                     # plus we have O(logN) to handle the heap again [O(N)+O(logN)=O(N)]
                     # Fibonacci heaps - O(1)
                     heapq.heappush(self.heap, v)
+
+            actual_vertex.visited = True
